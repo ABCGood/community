@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="en" style="margin: 0 auto;background-color: #f7f4f4">
+<head>
+    <meta charset="UTF-8">
+    <meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0;" name="viewport" />
+    <title>详情</title>
+</head>
+<link rel="stylesheet" href="CSS/index.css">
+<script src="js/jquery.min.js"></script>
+<style>
+    a{
+        -webkit-tap-highlight-color: rgba(255, 255, 255, 0);
+
+        -webkit-user-select: none;
+
+        -moz-user-focus: none;
+
+        -moz-user-select: none;
+    }
+</style>
+<body>
+
+<!-- 留言 -->
+<div id="liuyan_Content" style="display: none">
+    <form  action="#" method="get" onsubmit="submitInfo()">
+        <textarea id="content" style="width: 80%;height: 30%;margin-left: 7%;padding: 10px;font-size: 14px;margin-top: 50px;position: fixed;z-index: 1045;border-radius: 5px"></textarea>
+        <input id="Button1" onclick="submitInfo()" type="button" value="提交" style="position: fixed;z-index: 1045;border-radius: 2px;font-size: 12px;width: 50px;height: 35px;margin-top: 85%;margin-left: 45%" />
+    </form>
+</div>
+<div id="tabBG" onclick="text(this)" style="position: fixed;top: 0;right: 0;bottom: 0;left: 0;z-index: 1040;background-color: #000000;opacity: .75;display: none"></div>
+
+<!--标题-->
+<span style="position: absolute;z-index: 10;font-size: 24px;color: white;margin-top: 15px;margin-left: 20px">
+    <a href="index.html">
+        <img src="image/icon/7.png" style="text-decoration: none;width: 15px;margin-left: -10px">
+    </a>
+</span>
+<div class="title">
+    <p>详情</p>
+</div>
+
+<!--正文内容-->
+<!-- 模板 -->
+<script id="Content_ZW" type="text/html">
+    <div style="padding:0 3%;" id="zwContent">
+        <p style="font-size: 14px;line-height: 20px;height: 25px">{{ d.zwContent[0].con_title }}</p>
+        <span style="color: #6e6e6e;font-size: 12px">{{ d.zwContent[0].con_time }}</span>
+        <p style="color: #6e6e6e;line-height: 20px;font-size: 12px;margin-top: 5px">{{ d.zwContent[0].con_content }}</p>
+    </div>
+</script>
+<div id="textContent"></div>
+
+<div class="con_icon">
+    <p style="margin-left: 12px;">220</p>
+    <img src="image/icon/3.png" style="margin-left: -10px">
+    <p style="margin-left: 62px;">400</p>
+    <img src="image/icon/4.png" style="margin-left: 40px">
+    <p style="margin-left: 110px;" onclick="text(this)" id="dianzan">点赞</p>
+    <img src="image/icon/5.png" style="margin-left: 90px">
+    <span onclick="text(this)" id="more">更多内容</span>
+</div>
+
+<!-- 广告 -->
+<div style="margin-top: 45px;text-align: center">
+    <img src="image/activity1.jpeg"style="width: 95%;height:50px;background-color: black;">
+</div>
+
+<!--留言部分-->
+<div style="text-align: center;color: #6e6e6e;font-size: 12px;height: 15px">
+    <p>--------------- 社区留言 ---------------</p>
+</div>
+<span style="font-size: 12px;float:right;margin-right: 4%;color: red;margin-top: 0.63em" id="liuyan" onclick="text(this)">留言</span>
+<div style="float: right;">
+    <img src="image/icon/6.png" style="width: 30px;">
+</div>
+
+<!-- 留言 -->
+<script id="LiuYanContent" type="text/html">
+    <div style="padding: 1.25em 0.94em 0 1.25em" id="listContent">
+        {{# for(var i = 0; i < d.content.length; i++){ }}
+        <div style="margin-top: 1.25em">
+            <div class='ly_icon'></div>
+            <div style='margin-left: 3.75em' class='ly_content'>
+                <span style="font-size: 12px">22</span>
+                <img src='image/icon/5.png' style="width: 28px;float: right;">
+                <p style="color: red;font-size: 12px">鹿小葵</p>
+                <p style="font-size: 12px">{{ d.content[i].liuyan_content }}</p>
+                <p style="font-size: 12px">{{ d.content[i].liuyan_time }}</p>
+                <hr style="border: 0.5px solid #ddd">
+                <p style="margin-bottom: 0.94em;margin-top: 0.94em;font-size: 12px">作者回复：{{ d.content[i].liuyan_r }}</p>
+            </div>
+            <hr style="border: 0.5px solid #ddd">
+        </div>
+        {{# } }}
+    </div>
+</script>
+<div id="textLiuYan"></div>
+
+<!--<div style="padding: 1.25em 0.94em 0 1.25em;display: none" id="linshi">-->
+    <!--<div class="ly_icon"></div>-->
+    <!--<div style="margin-left: 3.75em" class="ly_content">-->
+        <!--<span style="font-size: 12px">22</span>-->
+        <!--<img src="image/icon/5.png" style="width: 30px;float: right;">-->
+        <!--<p style="color: red;font-size: 12px">鹿小葵</p>-->
+        <!--<p id="lyContent" style="font-size: 12px"></p>-->
+        <!--<p style="font-size: 12px">2018.03.04  20:18:00</p>-->
+    <!--</div>-->
+    <!--<hr style='border: 0.5px solid #ddd'>-->
+<!--</div>-->
+<!--<div style="height: 30px"></div>-->
+
+<script>
+</script>
+<script src="js/laytpl.js"></script>
+<script src="js/content.js"></script>
+</body>
+</html>
